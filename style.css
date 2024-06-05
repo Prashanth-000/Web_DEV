@@ -1,0 +1,48 @@
+*{
+    background-color: rgb(204, 245, 250);
+    text-align: center;
+    
+}
+body{
+    margin-left: 40%;
+    border: 2px solid black;
+    width: 350px;
+    height: 450px;
+}
+#subbut{
+    font-size: 25px;
+}
+.para{
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#paycont{
+    margin-left: 40%;
+    text-align: left;
+    font-size: 18px;
+}
+#submited{
+    font-size: 23px;
+    background-color:rgb(102, 74, 230);
+    color:white;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.25s;
+    
+}
+#submited:hover{
+    background-color: brown;
+}
+#payres{
+    color: rgb(250, 2, 2);
+    background-color:aquamarine
+}
+#subres{
+    color: rgb(255, 0, 170);
+    
+    background-color:aquamarine
+}
+input{
+    cursor: pointer;
+}
