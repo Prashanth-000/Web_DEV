@@ -1,31 +1,22 @@
-const sub=document.getElementById("sub");
-const paypal=document.getElementById("paypal");
-const upi=document.getElementById("upi");
-const phone=document.getElementById("phonepay");
-const subres=document.getElementById("subres");
-const payres=document.getElementById("payres");
-const submiting=document.getElementById("submited");
+const http=require('http')
+const fs=require('fs')
+const url=require('url')
 
-submiting.onclick=function(){
-    console.log("Submitted")
-    if(sub.checked){
-        subres.textContent=`Subscription Done!`;
-        if(paypal.checked){
-            payres.textContent=`You are using PayPal`;
-        }
-        else if(upi.checked){
-            payres.textContent=`You are using UPI`;
-        }
-        else if(phone.checked){
-            payres.textContent=`You are using PhonePe`;
-        }
-        else{
-            payres.textContent=`Select apayment method`;
-        }
+http.createServer((req,res)=>{
+    const name=url.parse(req.url,true);
+    let fileName=name.pathname;
+    if(fileName.startsWith("/")){
+        fileName=fileName.substring(1);
+        console.log(fileName);
     }
-    else{
-        subres.textContent=`You need to subscribe first!`;
-        payres.textContent=``;
-    }
-}
+    fs.readFile(fileName,(err,data)=>{
+        if(err){
+            res.writeHead(404,{"content-type":"text/html"});
+            return res.end("404 not file found");
+        }
+        res.writeHead(200,{"content-type":"text/html"});
+        res.write(data);
+        return res.end();
+    });
 
+}).listen(3000,()=>console.log("Server running in port 3000"));
